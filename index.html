@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
 </head>
@@ -16,12 +17,14 @@
     <div class="container">
         <nav>
             <img src="" class="logo">
-            <ul>
-                <li><a href="#">Home</a> </li>
-                <li><a href="#">About</a> </li>
-                <li><a href="#">Curriculum Vitae</a> </li>
-                <li><a href="#">Contact</a> </li>
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a> </li>
+                <li><a href="#about">About</a> </li>
+                <li><a href="#Cvv">Curriculum Vitae</a> </li>
+                <li><a href="#contact">Contact</a> </li>
+                <i class="fa fa-times" onclick="closemenu()"></i>
             </ul>
+            <i class="fa fa-bars" onclick="openmenu()"></i>
         </nav>
         <div class="header-text">
             <p>Software Developer</p>
@@ -38,11 +41,31 @@
             </div>
             <div class="about-col-2">
                 <h1 class="sub-title">About Me</h1>
-                <p></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet sollicitudin ipsum.
-                    Proin sit amet velit a dui eleifend fermentum a id mauris. Curabitur varius mattis ligula. Sed
-                    pretium tincidunt est, eu hendrerit neque pulvinar at. Sed sit amet diam sed justo congue
-                    ullamcorper.</p>
+
+                <p>Greetings!</p>
+                <p>I'm a software developer at Microsoft and I spend my days immersed in the fascinating world of
+                    technology. As I investigate the fields of competitive programming and artificial intelligence, I'm
+                    driven to continually push the envelope of what's possible. My journey has taken me through
+                    life-changing internships at ZS, Southern Denmark University, University College of London, and
+                    McGill University, each experience moulding me into a well-rounded professional.
+
+                    When I'm not using my coding talents, you can find me humming tunes on my dependable guitar and
+                    getting lost in a world of blissful harmony. As I watch Formula 1 races from the comfort of my seat
+                    and support the racers, I unleash my inner speed enthusiast. My playground of fun and fellowship is
+                    football and swimming, where I enjoy the spirit of cooperation and healthy competition.
+
+
+                    But I'm more than just music and lines of code. I dive into the world of video/photo design and editing,
+                    using Adobe Photoshop and Premiere Pro as my creative tools, and I weave captivating and motivating
+                    narratives.
+
+
+                </p>
+                <p>
+                    I'm always up for healthy discussions and exchanging ideas, so feel free to join the conversation.
+                    Let's embark on this exciting journey together,
+                    where coding meets laughter and innovation knows no bounds!
+                </p>
 
 
             </div>
@@ -51,12 +74,12 @@
     </div>
 </div>
 <!-----------CV-------------->
-<div id="CV">
+<div id="Cvv" class="CV">
     <div class="container">
-        <center>
-            <h1 class="cv-heading">Curriculum Vitae</h1>
-            <object data="CV.pdf" class="cv"></object>
-        </center>
+
+        <h1 class="cv-heading">Curriculum Vitae</h1>
+        <object data="CV.pdf" class="cv"></object>
+
 
     </div>
 </div>
@@ -67,17 +90,57 @@
         <div class="row">
             <div class="contact-left">
                 <h1 class="sub-title">Contact Me</h1>
-                <p>shivamshrivastava2000@gmail.com</p>
-                <p>9263190742</p>
+                <p><i class="fa fa-paper-plane"></i>shivamshrivastava2000@gmail.com</p>
+                <p><i class="fa fa-phone"></i>9263190742</p>
                 <div class="social-icons">
-                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/shivam.shrivastava.98/"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/shiv_314/"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/shivam-shrivastava-ab6404179"><i class="fa fa-linkedin"></i></a>
                 </div>
             </div>
-            <div class="contact-right"></div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
         </div>
     </div>
+    <div class="copyright">
+        <p>Copyright &#169 Shivam Shrivastava <i class="fa fa-heart"></i></p>
+    </div>
+
 </div>
+
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
+
+</script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxeKtCLRY4LmbqebRFLHaZfc_jkIFV4FH0fgkl7_C72M3YnulTSlIaBw04QHbpUp5l1lw/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {msg.innerHTML = "Message sent successfully!"
+      setTimeout(function (){
+          msg.innerHTML = ""
+      },5000)
+          form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
