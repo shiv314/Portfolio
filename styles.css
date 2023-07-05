@@ -113,6 +113,9 @@ nav ul li a:hover:after{
     width: 100%;
     height: 500px;
 }
+.phone-cv{
+    display: none;
+}
 
 /*--------------Contact----------------*/
 #contact{
@@ -180,6 +183,7 @@ form input, form textarea{
     font-size: 18px;
     border-radius: 6px;
 }
+
 form .btn2{
     padding: 14px 60px;
     font-size: 18px;
@@ -266,6 +270,15 @@ nav .fa{
     }
     .copyright{
         font-size: 14px;
+    }
+    .phone-cv{
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+    }
+    .cv{
+        display: none;
     }
 }
 #msg{
